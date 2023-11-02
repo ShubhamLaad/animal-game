@@ -1,10 +1,10 @@
-import { Counter } from '../counter/Counter';
+import { AnimalGame } from '../animal-game/AnimalGame';
 import './App.css';
 
 export function App() {
   return (
     <div className="App">
-      <Counter />
+      <AnimalGame />
     </div>
   );
 }
