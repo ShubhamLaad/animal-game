@@ -1,10 +1,7 @@
 import './AnimalGame.css';
 import { setSelectedAnimal } from './animalGameSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
-const [FULL, PARTIAL, NONE] = ['FULL', 'PARTIAL', 'NONE'];
-const ANIMALS = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3'];
-const GUESSE_STEPS = [[FULL, PARTIAL, NONE]];
+import { ANIMALS, FULL, PARTIAL } from './constant';
 
 const getCircleClass = (guess) => {
   switch (guess) {
@@ -20,6 +17,7 @@ const getCircleClass = (guess) => {
 export function AnimalGame() {
   const dispatch = useDispatch();
   const selectedAnimals = useSelector((state) => state.animal.selectedAnimals);
+  const guessSteps = useSelector((state) => state.animal.guessSteps);
 
   const handleAnimal = ({ target: { name, value } }) => {
     dispatch(setSelectedAnimal({ name: parseInt(name), value }));
@@ -27,7 +25,7 @@ export function AnimalGame() {
 
   return (
     <main>
-      <h1>Animal Game</h1>
+      <h1>Guess The Animals</h1>
       <ol className="iconList">
         <li>
           {selectedAnimals.map((select, index) => (
@@ -43,10 +41,10 @@ export function AnimalGame() {
             </div>
           ))}
         </li>
-        {GUESSE_STEPS.map((guesses, index) => (
+        {guessSteps.map((guesses, index) => (
           <li key={index}>
-            {guesses.map((guess) => (
-              <div key={guess}>
+            {guesses.map((guess, index) => (
+              <div key={index}>
                 <i className={getCircleClass(guess)}></i>
               </div>
             ))}
