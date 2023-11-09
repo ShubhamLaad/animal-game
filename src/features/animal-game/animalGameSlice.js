@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ANIMAL_OBJ, FULL, NONE, PARTIAL } from './constant';
-const winningAnimals = ['A1', 'A1', 'B1'];
+import { ANIMAL_OBJ, FULL, NONE, PARTIAL, winningAnimals } from './constant';
 
 const initialState = {
   selectedAnimals: ['', '', ''],

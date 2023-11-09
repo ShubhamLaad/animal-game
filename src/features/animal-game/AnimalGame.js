@@ -23,14 +23,23 @@ export function AnimalGame() {
     dispatch(setSelectedAnimal({ name: parseInt(name), value }));
   };
 
+  const disabledSelectFullGuess = (index) =>
+    guessSteps[guessSteps.length - 1] &&
+    guessSteps[guessSteps.length - 1][index] === FULL;
+
   return (
     <main>
       <h1>Guess The Animals</h1>
       <ol className="iconList">
         <li>
-          {selectedAnimals.map((select, index) => (
+          {selectedAnimals.map((animal, index) => (
             <div key={index}>
-              <select name={index} onChange={handleAnimal} value={select}>
+              <select
+                disabled={disabledSelectFullGuess(index)}
+                name={index}
+                onChange={handleAnimal}
+                value={animal}
+              >
                 <option value="">Select</option>
                 {ANIMALS.map((animal) => (
                   <option key={animal} value={animal}>
