@@ -20,7 +20,8 @@ export const animalSlice = createSlice({
   reducers: {
     setSelectedAnimal: (state, action) => {
       state.selectedAnimals[action.payload.name] = action.payload.value;
-
+    },
+    setGuessSteps: (state, action) => {
       // check all value selected
       const allSelected = state.selectedAnimals.every(
         (animal) => Boolean(animal) === true
@@ -36,6 +37,6 @@ export const animalSlice = createSlice({
   },
 });
 
-export const { setSelectedAnimal } = animalSlice.actions;
+export const { setSelectedAnimal, setGuessSteps } = animalSlice.actions;
 
 export default animalSlice.reducer;

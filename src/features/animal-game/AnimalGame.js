@@ -1,5 +1,5 @@
 import './AnimalGame.css';
-import { setSelectedAnimal } from './animalGameSlice';
+import { setSelectedAnimal, setGuessSteps } from './animalGameSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ANIMALS, FULL, PARTIAL } from './constant';
 
@@ -26,6 +26,14 @@ export function AnimalGame() {
   const disabledSelectFullGuess = (index) =>
     guessSteps[guessSteps.length - 1] &&
     guessSteps[guessSteps.length - 1][index] === FULL;
+
+  const handleOk = () => {
+    dispatch(setGuessSteps());
+  };
+
+  const isAllGuessed =
+    guessSteps.length !== 0 &&
+    guessSteps[guessSteps.length - 1].every((guess) => guess === FULL);
 
   return (
     <main>
@@ -60,6 +68,9 @@ export function AnimalGame() {
           </li>
         ))}
       </ol>
+      <button onClick={handleOk} className="okBtn" disabled={isAllGuessed}>
+        {isAllGuessed ? `U WON IN ${guessSteps.length} STEPS!` : 'OK'}
+      </button>
     </main>
   );
 }

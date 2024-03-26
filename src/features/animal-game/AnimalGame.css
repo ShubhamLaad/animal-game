@@ -37,3 +37,14 @@ main {
   background: transparent;
   color: white;
 }
+.okBtn {
+  width: 100%;
+  line-height: 2;
+  font-size: 2rem;
+}
+.okBtn:hover {
+  background-color: gray;
+}
+h1 {
+  color: red;
+}
