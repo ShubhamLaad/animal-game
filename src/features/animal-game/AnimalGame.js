@@ -13,10 +13,11 @@ const selectOptions = ANIMALS.map((animal) => ({
 const customStyles = {
   option: (styles, { data, isFocused }) => ({
     ...styles,
-    backgroundColor: isFocused ? '#333333' : '#1a1a1a',
+    backgroundColor: isFocused ? '#334155' : '#1e293b',
     color: data.color,
     fontWeight: 'bold',
     cursor: 'pointer',
+    padding: '10px',
   }),
   singleValue: (styles, { data }) => ({
     ...styles,
@@ -25,13 +26,22 @@ const customStyles = {
   }),
   control: (styles) => ({
     ...styles,
-    minWidth: '140px',
-    backgroundColor: '#1a1a1a',
+    minWidth: '100px',
+    backgroundColor: '#0f172a',
+    borderColor: '#334155',
     boxShadow: 'none',
+    '&:hover': {
+      borderColor: '#38bdf8',
+    },
   }),
   menu: (styles) => ({
     ...styles,
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#1e293b',
+    border: '1px solid #334155',
+  }),
+  placeholder: (styles) => ({
+    ...styles,
+    color: '#64748b',
   }),
 };
 
@@ -58,7 +68,7 @@ export function AnimalGame() {
 
   return (
     <main>
-      <h1>Guess The Animals</h1>
+      <h1>Animal Codebreaker</h1>
       <ol className="iconList">
         <li>
           {selectedAnimals.map((animal, selectBoxIndex) => (
@@ -89,7 +99,11 @@ export function AnimalGame() {
           </li>
         ))}
       </ol>
-      <button onClick={handleOk} className="okBtn" disabled={isAllGuessed}>
+      <button
+        onClick={handleOk}
+        className={`okBtn ${isAllGuessed ? 'won-btn' : ''}`}
+        disabled={isAllGuessed}
+      >
         {isAllGuessed ? `U WON IN ${guessSteps.length} STEPS!` : 'OK'}
       </button>
     </main>
