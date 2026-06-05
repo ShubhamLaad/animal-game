@@ -1,21 +1,21 @@
 main {
   padding: 10px;
   text-align: center;
-  max-width: 480px;
+  max-width: 600px;
   margin: auto;
 }
-.redCircle,
-.whiteCircle {
+.FULL,
+.PARTIAL {
   width: 20px;
   height: 20px;
   border-radius: 100%;
   display: block;
   margin: auto;
 }
-.redCircle {
-  background: red;
+.FULL {
+  background: green;
 }
-.whiteCircle {
+.PARTIAL {
   background: white;
 }
 .iconList {
@@ -31,12 +31,7 @@ main {
   display: table-cell;
   padding: 10px;
 }
-.iconList select {
-  width: 100%;
-  font-size: 1em;
-  background: transparent;
-  color: white;
-}
+
 .okBtn {
   width: 100%;
   line-height: 2;
@@ -47,4 +42,10 @@ main {
 }
 h1 {
   color: red;
+}
+.selectAnimal {
+  width: 100%;
+  font-size: 1em;
+  background: transparent;
+  color: white;
 }
