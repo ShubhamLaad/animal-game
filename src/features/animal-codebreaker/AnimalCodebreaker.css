@@ -9,6 +9,9 @@
   --danger: #ef4444;
   --border: #334155;
 }
+html {
+  font-size: 16px; /* 1rem = 16px */
+}
 
 body {
   margin: 0;
@@ -50,7 +53,7 @@ h1 {
 .iconList {
   list-style: none;
   padding: 0;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -140,8 +143,10 @@ i.NONE {
 }
 
 @media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
   main {
     width: 100%;
-    padding: 1rem;
   }
 }
