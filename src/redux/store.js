@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
-import animalReducer from '../features/animal-game/animalGameSlice';
+import animalReducer from '../features/animal-codebreaker/animalSlice';
 
 export const store = configureStore({
   reducer: {

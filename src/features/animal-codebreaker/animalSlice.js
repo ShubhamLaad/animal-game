@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FULL, NONE, PARTIAL, winningAnimals } from './constant';
+import { FULL, NONE, PARTIAL, winningAnimals } from '../constant';
 
 const initialState = {
   selectedAnimals: ['', '', ''],

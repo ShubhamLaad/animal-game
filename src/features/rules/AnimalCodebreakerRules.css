@@ -1,0 +1,143 @@
+/* Rules Section Styling */
+.codebreaker-card {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+
+.codebreaker-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.codebreaker-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.codebreaker-subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  max-width: 80%;
+}
+
+.codebreaker-toggle-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.codebreaker-toggle-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.codebreaker-content.hidden {
+  display: none;
+}
+
+.codebreaker-intro-box {
+  background: linear-gradient(to right, rgba(56, 189, 248, 0.1), transparent);
+  border-left: 4px solid var(--accent);
+  padding: 1rem;
+  border-radius: 4px 12px 12px 4px;
+  margin-bottom: 1.5rem;
+}
+
+.codebreaker-intro-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.codebreaker-heading {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin: 1.5rem 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.codebreaker-objective-card,
+.codebreaker-tip-box {
+  background: rgba(15, 23, 42, 0.4);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.codebreaker-paragraph {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.codebreaker-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.codebreaker-row {
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.codebreaker-badge-cell {
+  padding: 12px 8px;
+  width: 130px;
+}
+
+.codebreaker-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--bg-color);
+  border: 1px solid var(--border);
+}
+
+.badge-green {
+  color: var(--success);
+  border-color: var(--success);
+}
+.badge-white {
+  color: var(--warning);
+  border-color: var(--warning);
+}
+.badge-none {
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+.codebreaker-tip-title {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
+}

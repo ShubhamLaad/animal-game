@@ -1,8 +1,9 @@
-import './AnimalGame.css';
-import { setSelectedAnimal, setGuessSteps } from './animalGameSlice';
+import './AnimalCodebreaker.css';
+import { setSelectedAnimal, setGuessSteps } from './animalSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { ANIMALS, ANIMAL_COLORS, FULL, PARTIAL } from './constant';
+import { ANIMALS, ANIMAL_COLORS, FULL } from '../constant';
 import Select from 'react-select';
+import AnimalCodebreakerRules from '../rules/AnimalCodebreakerRules';
 
 const selectOptions = ANIMALS.map((animal) => ({
   value: `${animal.animalType}-${animal.animalColor}`,
@@ -26,7 +27,7 @@ const customStyles = {
   }),
   control: (styles) => ({
     ...styles,
-    minWidth: '100px',
+    minWidth: '120px', // Increased for better readability
     backgroundColor: '#0f172a',
     borderColor: '#334155',
     boxShadow: 'none',
@@ -38,6 +39,11 @@ const customStyles = {
     ...styles,
     backgroundColor: '#1e293b',
     border: '1px solid #334155',
+    zIndex: 9999, // Ensure the dropdown appears on top
+  }),
+  menuPortal: (base) => ({
+    ...base,
+    zIndex: 9999, // Ensure the portal itself has a high z-index
   }),
   placeholder: (styles) => ({
     ...styles,
@@ -45,7 +51,7 @@ const customStyles = {
   }),
 };
 
-export function AnimalGame() {
+export function AnimalCodebreaker() {
   const dispatch = useDispatch();
   const selectedAnimals = useSelector((state) => state.animal.selectedAnimals);
   const guessSteps = useSelector((state) => state.animal.guessSteps);
@@ -83,6 +89,8 @@ export function AnimalGame() {
                 value={
                   selectOptions.find((opt) => opt.value === animal) || null
                 }
+                menuPortalTarget={document.body} // Render dropdown outside of parent elements
+                menuPlacement="auto" // Automatically place menu above or below
                 placeholder="Select"
                 isSearchable={false}
               />
@@ -106,6 +114,8 @@ export function AnimalGame() {
       >
         {isAllGuessed ? `U WON IN ${guessSteps.length} STEPS!` : 'OK'}
       </button>
+
+      <AnimalCodebreakerRules />
     </main>
   );
 }
