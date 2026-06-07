@@ -4,6 +4,7 @@ import { FULL, NONE, PARTIAL, winningAnimals } from '../constant';
 const initialState = {
   selectedAnimals: ['', '', ''],
   guessSteps: [],
+  history: [],
 };
 
 const getAnimalValue = (selectedAnimal) => {
@@ -57,6 +58,12 @@ export const animalSlice = createSlice({
       }
     },
     resetGame: (state) => {
+      const lastStep = state.guessSteps[state.guessSteps.length - 1];
+      const isWin = lastStep && lastStep.every((guess) => guess === FULL);
+
+      if (isWin) {
+        state.history.push({ steps: state.guessSteps.length });
+      }
       state.selectedAnimals = ['', '', ''];
       state.guessSteps = [];
     },

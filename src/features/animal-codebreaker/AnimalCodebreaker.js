@@ -55,6 +55,7 @@ export function AnimalCodebreaker() {
   const dispatch = useDispatch();
   const selectedAnimals = useSelector((state) => state.animal.selectedAnimals);
   const guessSteps = useSelector((state) => state.animal.guessSteps);
+  const history = useSelector((state) => state.animal.history);
 
   const handleAnimal = (index, value) => {
     dispatch(setSelectedAnimal({ selectBoxIndex: index, value }));
@@ -119,6 +120,15 @@ export function AnimalCodebreaker() {
           ? `YOU WON IN ${guessSteps.length} STEPS🏆! PLAY NEW GAME`
           : 'OK'}
       </button>
+
+      {history.length > 0 && (
+        <div className="last-result">
+          <span>Last Game: </span>
+          <strong>
+            Won in {history[history.length - 1].steps} steps 🏆
+          </strong>
+        </div>
+      )}
 
       <AnimalCodebreakerRules />
     </main>
