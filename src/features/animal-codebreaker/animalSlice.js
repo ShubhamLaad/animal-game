@@ -56,9 +56,14 @@ export const animalSlice = createSlice({
         );
       }
     },
+    resetGame: (state) => {
+      state.selectedAnimals = ['', '', ''];
+      state.guessSteps = [];
+    },
   },
 });
 
-export const { setSelectedAnimal, setGuessSteps } = animalSlice.actions;
+export const { setSelectedAnimal, setGuessSteps, resetGame } =
+  animalSlice.actions;
 
 export default animalSlice.reducer;

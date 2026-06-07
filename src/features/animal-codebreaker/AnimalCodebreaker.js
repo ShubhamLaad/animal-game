@@ -1,5 +1,5 @@
 import './AnimalCodebreaker.css';
-import { setSelectedAnimal, setGuessSteps } from './animalSlice';
+import { setSelectedAnimal, setGuessSteps, resetGame } from './animalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ANIMALS, ANIMAL_COLORS, FULL } from '../constant';
 import Select from 'react-select';
@@ -64,13 +64,17 @@ export function AnimalCodebreaker() {
     guessSteps[guessSteps.length - 1] &&
     guessSteps[guessSteps.length - 1][index] === FULL;
 
-  const handleOk = () => {
-    dispatch(setGuessSteps());
-  };
-
   const isAllGuessed =
     guessSteps.length !== 0 &&
     guessSteps[guessSteps.length - 1].every((guess) => guess === FULL);
+
+  const handleOk = () => {
+    if (isAllGuessed) {
+      dispatch(resetGame());
+    } else {
+      dispatch(setGuessSteps());
+    }
+  };
 
   return (
     <main>
@@ -110,9 +114,10 @@ export function AnimalCodebreaker() {
       <button
         onClick={handleOk}
         className={`okBtn ${isAllGuessed ? 'won-btn' : ''}`}
-        disabled={isAllGuessed}
       >
-        {isAllGuessed ? `U WON IN ${guessSteps.length} STEPS!` : 'OK'}
+        {isAllGuessed
+          ? `YOU WON IN ${guessSteps.length} STEPS🏆! PLAY NEW GAME`
+          : 'OK'}
       </button>
 
       <AnimalCodebreakerRules />
