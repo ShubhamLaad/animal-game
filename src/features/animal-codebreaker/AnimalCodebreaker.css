@@ -139,6 +139,48 @@ i.NONE {
   border-radius: 12px;
   border: 1px dashed var(--border);
   color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.last-result:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--accent);
+}
+
+.history-title {
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.history-list {
+  max-height: 150px;
+  overflow-y: auto;
+  margin: 0.5rem 0;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+  font-size: 0.9rem;
+}
+
+.history-footer,
+.history-hint {
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.history-item:last-child {
+  border-bottom: none;
 }
 
 @media (max-width: 767px) {

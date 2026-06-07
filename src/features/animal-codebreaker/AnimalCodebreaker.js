@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './AnimalCodebreaker.css';
 import { setSelectedAnimal, setGuessSteps, resetGame } from './animalSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -56,6 +57,7 @@ export function AnimalCodebreaker() {
   const selectedAnimals = useSelector((state) => state.animal.selectedAnimals);
   const guessSteps = useSelector((state) => state.animal.guessSteps);
   const history = useSelector((state) => state.animal.history);
+  const [showAllHistory, setShowAllHistory] = useState(false);
 
   const handleAnimal = (index, value) => {
     dispatch(setSelectedAnimal({ selectBoxIndex: index, value }));
@@ -122,11 +124,32 @@ export function AnimalCodebreaker() {
       </button>
 
       {history.length > 0 && (
-        <div className="last-result">
-          <span>Last Game: </span>
-          <strong>
-            Won in {history[history.length - 1].steps} steps 🏆
-          </strong>
+        <div
+          className={`last-result ${showAllHistory ? 'expanded' : ''}`}
+          onClick={() => setShowAllHistory(!showAllHistory)}
+        >
+          {showAllHistory ? (
+            <>
+              <div className="history-title">Game History</div>
+              <div className="history-list">
+                {[...history].reverse().map((game, i) => (
+                  <div key={i} className="history-item">
+                    <span>Game {history.length - i}</span>
+                    <strong>{game.steps} steps 🏆</strong>
+                  </div>
+                ))}
+              </div>
+              <div className="history-footer">Click to collapse</div>
+            </>
+          ) : (
+            <>
+              <span>Last Game: </span>
+              <strong>
+                Won in {history[history.length - 1].steps} steps 🏆
+              </strong>
+              <div className="history-hint">Click to see all results</div>
+            </>
+          )}
         </div>
       )}
 

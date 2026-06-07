@@ -1,10 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { FULL, NONE, PARTIAL, winningAnimals } from '../constant';
 
+const getStoredHistory = () => {
+  try {
+    const history = localStorage.getItem('animal-codebreaker-history');
+    return history ? JSON.parse(history) : [];
+  } catch (error) {
+    return [];
+  }
+};
+
 const initialState = {
   selectedAnimals: ['', '', ''],
   guessSteps: [],
-  history: [],
+  history: getStoredHistory(),
 };
 
 const getAnimalValue = (selectedAnimal) => {
@@ -63,6 +72,10 @@ export const animalSlice = createSlice({
 
       if (isWin) {
         state.history.push({ steps: state.guessSteps.length });
+        localStorage.setItem(
+          'animal-codebreaker-history',
+          JSON.stringify(state.history),
+        );
       }
       state.selectedAnimals = ['', '', ''];
       state.guessSteps = [];
